@@ -28,7 +28,13 @@ public abstract class AbstractTest {
 
   private static WebServer server;
 
-  @BeforeAll
+  /**
+   * Sets up the test environment by creating a WebServer instance if it doesn't exist, 
+   * and starting the server.
+   *
+   * @param  None
+   * @return None
+   */
   public static void setUp() {
     if (server == null) {
       server = WebServer.create(new WebTestModule());
@@ -36,14 +42,25 @@ public abstract class AbstractTest {
     server.start();
   }
 
-  @AfterAll
+  /**
+   * Tears down the server after all tests have been executed.
+   *
+   * This method checks if the server is not null and stops it if it is not.
+   *
+   * @throws None
+   */
   public static void tearDown() {
     if (server != null) {
       server.stop();
     }
   }
 
-  protected Invocation.Builder jsonPath(String path) {
+  /**
+   * Returns an Invocation.Builder object for making JSON requests to the specified path.
+   *
+   * @param  path  the path to the desired resource
+   * @return       an Invocation.Builder object for making JSON requests
+   */
     return server
         .target()
         .path(path)

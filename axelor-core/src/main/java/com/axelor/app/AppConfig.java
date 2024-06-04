@@ -17,7 +17,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.axelor.app;
-
+/**
+ * 
+ * boolean hasFeature(String featureName): This method checks if the application has a specific feature enabled. It takes a featureName as a parameter and returns a boolean indicating whether the feature is enabled or not.
+ * 
+ 
+ */
 public interface AppConfig {
 
   boolean hasFeature(String featureName);
