@@ -40,7 +40,17 @@ import org.jboss.resteasy.spi.Dispatcher;
 import org.jboss.resteasy.spi.ResteasyDeployment;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
-/** Servlet context listener. */
+/** Servlet context listener. 
+ * 
+ * 
+ * Sure, here's a succinct explanation of the AppContextListener class and its methods:
+
+AppContextListener extends GuiceServletContextListener, which is a listener class provided by the Google Guice framework for handling servlet context events.
+ResteasyDeployment deployment; - This is a private field that will be used to manage the deployment of a RESTEasy application.
+configureRestEasy(ServletContextEvent servletContextEvent) - This method is used to configure the RESTEasy application. It sets up the RESTEasy provider factory, resource method registry, and dispatcher. It also configures the session cookie and sets up the RESTEasy deployment.
+configureCookie(ServletContextEvent servletContextEvent) - This method configures the session cookie to be HTTP-only and secure, if specified in the application settings.
+
+*/
 public class AppContextListener extends GuiceServletContextListener {
 
   private ResteasyDeployment deployment;

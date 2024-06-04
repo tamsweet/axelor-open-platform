@@ -25,8 +25,37 @@ import com.axelor.rpc.ObjectMapperProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 
+/**
+ * Guice module for configuring the test environment.
+ * <p>
+ * This module is responsible for setting up the bindings and dependencies required
+ * for unit testing the application. It binds an {@code ObjectMapper} for JSON
+ * serialization/deserialization, installs a {@code JpaModule} to configure the
+ * database connection and entities for testing, and installs other modules
+ * (e.g., {@code AuthModule}, {@code AppModule}) to provide test-specific
+ * implementations or behaviors.
+ */
 public class TestModule extends AbstractModule {
-
+    /**
+     * Configures the bindings for the test module.
+     * <p>
+     * This method performs the following configurations:
+     * <ul>
+     *   <li>Binds {@link ObjectMapper} to {@link ObjectMapperProvider}, providing a
+     *       configured instance for testing.</li>
+     *   <li>Installs a {@link JpaModule} named "testUnit" with specific options
+     *       (true for unit testing, false for data persistence), and scans the
+     *       specified packages for database entities.</li>
+     *   <li>Installs additional modules:
+     *     <ul>
+     *       <li>{@link AuthModule}: Likely configures authentication/authorization
+     *           for the test environment.</li>
+     *       <li>{@link AppModule}: Provides general application-specific bindings
+     *           and configuration for testing.</li>
+     *     </ul>
+     *   </li>
+     * </ul>
+     */
   @Override
   protected void configure() {
 

@@ -30,6 +30,15 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/*
+ * appsettings: This is a singleton class that holds application settings. It has a private constructor that initializes the properties map with settings built by SettingsBuilder.
+ * get(): This is a static method that returns the singleton instance of AppSettings. If the instance is not created yet, it creates one.
+ * get(String key): This method retrieves a setting value by its key from the properties map.
+ * get(String key, String defaultValue): This method retrieves a setting value by its key from the properties map. If the key doesn't exist or the value is blank, it returns the default value.
+ * getList(String key): This method retrieves a comma-separated string value by its key from the properties map and splits it into a list of strings.
+ * getList(String key, Function<String, T> mapper): This method retrieves a list of values by its key from the properties map. It uses the provided mapper function to map each string value to a desired type.
+ * getInt(String key, int defaultValue): This method retrieves an integer value by its key from the properties map. If the value cannot be parsed to an integer, it returns the default value.
+ */
 public final class AppSettings {
 
   private Map<String, String> properties;
@@ -40,7 +49,11 @@ public final class AppSettings {
     properties = new SettingsBuilder().buildSettings();
   }
 
-  public static AppSettings get() {
+  /**
+   * Returns the singleton instance of the AppSettings class. If the instance does not exist, it creates a new one.
+   *
+   * @return  the singleton instance of the AppSettings class
+   */
     if (instance == null) {
       instance = new AppSettings();
     }
